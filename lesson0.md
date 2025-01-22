@@ -6,12 +6,12 @@ marp: true
 # Introduction
 ---
 # Tell us about you
-- Name
+- What's your name?
 - What Technology Program are you in?
-- What you hope to learn?
+- What do you hope to learn?
 ---
 # A bit about me
-- I'm a geographer by education, but focused on the technical and statistical side of things. 
+- I'm a geographer by education and focused on geographic information systems (GIS) and spatial statistics.
 - Data is one of my passions. I don't need to be hear, I actually want to be here.
 - I've been doing data analytics and engineering professionally for 10+ years.
 - I use SQL and Python on a daily basis.
@@ -25,7 +25,7 @@ marp: true
 
 ---
 # Grading
-- If you didn't raise your hand you should have.
+See the syllabus.
 - 
 ---
 # What We'll Cover at 10,000 feet
@@ -49,7 +49,7 @@ marp: true
     - Code (or the bones of code) will be here
     - Lectures will be here as pdfs and also written in Markdown (.md) and converted to slides using [MARP](https://marp.app)
 - MariaDB 
-    - This is a FOSS fork of MySQL (owned by Oracle)
+    - This is a fork of MySQL (owned by Oracle)
 ---
 # If you do what you're supposed to
 - You'll learn and hopefully have fun!

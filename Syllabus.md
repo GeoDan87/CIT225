@@ -1,3 +1,7 @@
+---
+marp: true
+---
+
 # Orange County Community College
 ## Computer Science & Technology Department
 
@@ -16,20 +20,18 @@ Prerequisites: CIT - 103 , CIT 105, or CIT 117
 
 ## COURSE FORMAT: Middletown Campus (M)
 Plan to attend class at the Middletown campus at the designated days and times. 
-- Mondays 6 PM - 8PM
-- Wednesdays 6 PM - 8 PM.
+- Mondays 6PM - 8PM
+- Wednesdays 6PM - 8 PM.
 
 ## RELATIONSHIP TO PROGRAMS: 
 This course may be applicable to several programs. Consult your advisor and refer to the SUNY Orange catalog (https://sunyorange.edu/catalog/) that contains additional information relating to this course and to your program to ensure that this course is applicable to your chosen program of study.
 
 ## STUDENT LEARNING OUTCOMES:
 After completing this course, students will be able to:
-● Design a conceptually sound database system normalized to 3rd normal form
-● Explain various industry standard data structuring models (e.g. Entity-Relation Diagrams)
-● Develop and implement a complete database system.
-● Understand basic SQL and its use in data management (insertion, retrieval, etc.)
-
-CHRONOLOGY OF STUDY: See last page.
+- Design a conceptually sound database system normalized to 3rd normal form
+- Explain various industry standard data structuring models (e.g. Entity-Relation Diagrams)
+- Develop and implement a complete database system.
+- Understand SQL and its use in data management (insertion, retrieval, etc.)
 
 ## TYPES OF ASSESSMENTS / GRADE DISTRIBUTION:
 - Exams 60%
@@ -71,24 +73,12 @@ Library Support: The College Library services are available on campus and remote
 assist students! For questions and information on accessing library research, materials,
 resources, and the student Chromebook lending program through the SUNY Orange
 Library, please visit: https://sunyorange.edu/library/
-OFFICE HOUR:
 
-ATTENDANCE POLICY: The student is responsible for the material discussed in class,
-including material not covered in the text. Missing a class means missing a substantial
-portion of the topic lecture and discussion. In the interest of fairness to the students who
-attend regularly, the following guidelines to attendance will apply. Class begins promptly as
-scheduled. Please be ready to begin at that time. While it is better to arrive late than not at
-all, it is better still to arrive on time every time. Students arriving late or leaving early before
-the class is dismissed will be counted as absent for the entire class. Excessive absences
-and tardiness will affect your grades. An excessive absence for this course is considered
-
-to be more than 10% of the class. Lateness is considered to be after 5 minutes past the start
-of class. After your absentee rate has reached 10% of the classes, your grade will be
-reduced by 1 letter grade. Missing more than 20% of the classes will result in failure of
-the course. If an emergency situation arises, please contact me as soon as possible.
-Instructors shall not penalize students for absences for religious observance, military
-obligations or jury duty. You should inform the instructor when you anticipate an absence for
-any of these reasons so that arrangements can be made for make-up examinations or other
+## Attendance Policy:
+The student is responsible for the material discussed in class, including material not covered in the text. Missing a class means missing a substantial
+portion of the topic lecture and discussion. In the interest of fairness to the students who attend regularly, the following guidelines to attendance will apply. Class begins promptly as scheduled. Please be ready to begin at that time. While it is better to arrive late than not at all, it is better still to arrive on time every time. Students arriving late or leaving early before
+the class is dismissed will be counted as absent for the entire class. Excessive absences and tardiness will affect your grades. An excessive absence for this course is considered to be more than 10% of the class. Lateness is considered to be after 5 minutes past the start of class. After your absentee rate has reached 10% of the classes, your grade will be reduced by 1 letter grade. Missing more than 20% of the classes will result in failure of
+the course. If an emergency situation arises, please contact me as soon as possible. Instructors shall not penalize students for absences for religious observance, military obligations or jury duty. You should inform the instructor when you anticipate an absence for any of these reasons so that arrangements can be made for make-up examinations or other
 work.
 
 ## OFFICIAL WITHDRAWAL FROM A COURSE: 
