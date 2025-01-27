@@ -157,24 +157,28 @@ Technology professionals need to understand the business because we need to spot
 - Big Data systems are much costlier and require significantly more time and effort to build and maintain...so make sure it's absolutely necessary.
 ---
 
-# Entities, Attributes and Relationships example
-Let's use SUNY Orange as an example
-- At a basic level, SUNY Orange has <u>entities</u> such as instructor, student, course, building, classroom and degree
-- A student would have <u>attributes</u> such as first name, last name, identifiers like a student number or SSN and a date of birth
-- A course would have <u>attributes</u> such as name, number and description
-- A student entity has a <u>relationship</u> to a course and a degree
-- A course would have a <u>relationship</u> to a degree, classroom and instructor
----
 # Hierarchical Models
 - Hierarchical models use parent/child relationships.
     - A child can only belong to one parent.
     - A parent can have many children.
     - Linked by the physical arrangement of records.
     - Prone to data redundancy because of the strict parent/child relationships
+---
 
+# Hierarchical Model Example
+![width:1000px height:550px](hierarchicalmodel.png)
+
+---
 # Network Models
 - Network models are represented by nodes and set structures
+- Two key concepts that came out of this were:
+    - A **schema** is the conceptual organization of the entire database.
+    - The **subschema** defines the portion of the database “seen” by the application programs that actually produce the desired information from the data within the database.
+---
+# Network Model Example
+![width:1000px height:550px](networkmodel.png)
 
+---
 # Relational Model
 - Introduced in 1970 by E.F Codd
     - Orignally impractical because of the limitations of computers, but eventually led to the "database revolution"
@@ -201,10 +205,6 @@ Let's use SUNY Orange as an example
     - The internal workings of a RDBMS allow it to make decisions about the most efficient way to execute on these instructions
 ---
 
-• The schema is the conceptual organization of the entire database as viewed by the database administrator.
-• The subschema defines the portion of the database “seen” by the application programs that actually produce the desired information from the data within the database.
-
----
 # The Entity Relationship Model
 - Instances and Occurences
     - These represent the an individual row of data.
@@ -224,29 +224,26 @@ Let's use SUNY Orange as an example
 ![width:1000px height:550px](entityrelationshipdiagram.png)
 
 ---
-# Semantic Data Models
----
-# The Object Oriented (OO) Model
-- Data and relationships are stored in a single structure called an object.
-- This is a semantic data model
-- Objects that share similar charactersitics are grouped into a class that share both structure (attributes) and behavior (methods).
-- Classes are hierarchical which enables inheritance, or the ability of an object to inherit the attributes and methods of a class above it.
+# Semantic Data Models and Beyond
+- Semantic Data Models we aim to understand each piece of data within the context of its meaning. Each row represents something and can be mapped to additional attributes.
+- NoSQL focuses on Big Data and the storage and processing of structured and unstructured data.
+
 ---
 # The 3 V's
-- Velocity
-- Variety
-- Volume
+- Velocity - how fast data is being consumed and is needed to be turned into information.
+- Variety - the fact that data comes from multiple different sources, not all of which can follow the same model
+- Volume - how much data is being captured and stored.
 ---
 
 # Degrees of Data Abstraction
 ---
-## External Model
+# External Model
 - An end users view of the data.
     - Represented by the external schema(s).
     - This view is only what matters to them and their part of the business.
     - The view of different end-users will be different, so there isn't one external model. <!-- recall the importance of perspectives in data modeling. -->
 ---
-## Conceptual Model
+# Conceptual Model
 - The macro-level view of a database for use by the entire organization.
     - It provides a high-level description of the main database objects without getting too in depth.
     - It accounts for all of the external views.
@@ -255,7 +252,7 @@ Let's use SUNY Orange as an example
     - The conceptual model could be applied using any DBMS.
 
 ---
-## Internal Model
+# Internal Model
 - The representation of the database as seen by the DBMS itself.
     - Matching the conceptual model to the chosen implementation.
     - We'll be solely focused on the relational model for this class.
@@ -266,62 +263,8 @@ CREATE TABLE IF NOT EXISTS citclass.students (first_name VARCHAR(255)
 ```
 
 ---
-## Physical Model
+# Physical Model
 - How the data will be physically stored and accessed.
     - It is not hardware or software independent.
     - THe relational model minimizes the need to worry about physical storage and focus more on the fine-tuning.
     - For the purposes of this class it's not something we will dive into further.
-
----
-## Database Structure
-```
-Database
-├─ Metadata
-├─ Tables
-│  ├─ Columns/Fields
-│  ├─ Rows/Records
-├─ Views (Reference one or more tables)
-│  ├─ Columns/Fields
-│  ├─ Rows/Records
-├─ Triggers (Associated with Tables or Views)
-├─ Stored Procedures (Associated with Tables or Views)
-├─ User Defined Functions (Used throughout the database)
-```
----
-# SQL Commands and the L's
-DDL - Data Definition Language
-```
-CREATE TABLE IF NOT EXISTS citclass.students (first_name VARCHAR(255)
-                                              ,last_name VARCHAR(255)
-                                              ,id INT);
-```
----
-DML - Data Manipulation Language
-TCL - Transaction Control Language
-- TCL is used to manage the changes made using DML. They aren't always used together, but using TCL with DML allows us to be explicit about behavior.
-```
-/*TCL*/
-BEGIN TRANSACTION;
-
-/*DML*/
-INSERT INTO citclass.students(first_name, last_name, id)
-        VALUES('Johnny', 'Tables', 1102);
-
-/*TCL*/
-COMMIT;
-```
----
-DQL - Data Query Language
-```
-SELECT id
-FROM citclass.students
-WHERE last_name = 'Tables';
-```
-
-DCL - Data Control Language
-
-```
-GRANT SELECT 
-ON citclass.student 
-TO dan@localhost;
-```
