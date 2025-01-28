@@ -213,7 +213,7 @@ Technology professionals need to understand the business because we need to spot
 - Connectivity
     - Also known as the type of relationship between entities.
 - Commonly represented Entity Relationship Diagram (ERD)
-
+---
 # The Entity Relationship Model (ERM)
 - Entity Set == Table
 - Entity Instance/Occurence == Row
