@@ -3,6 +3,12 @@ marp: true
 ---
 # Lesson 3: Diving Deeper into the Relational Database Model
 ---
+# Quick Note
+I will post this on Brighspace and put the dates in the syllabus as well.
+- Your midterm will be on Monday, March 10.
+- Your final will be on Monday, May 12.
+- My goal is not to trick you, but rather to ensure your taking away the key concepts.
+---
 # Characteristics of a Relational Table
 |   | |
 | -------- | ------- |
@@ -16,7 +22,7 @@ marp: true
 | 8 | Each table must have an attribute or comibination of attributes that uniquely identifies each row. |
 ---
 # What does this mean?
-- Let's draw out an example.
+- Let's look at an example.
 ---
 # Keys a Deeper Dive
 - A **key** consists of one or more attributes of a table (aka relation).
@@ -28,13 +34,14 @@ marp: true
 # Functional Dependence Notation
 | Breaking Down the Notation                            |
 | --------                    |
-|STUDENT_ID → STUDENT_LASTNAME|
+|player_id → first_name|
 |DETERMINANT → DEPENDENT      |
-|STUDENT_ID functionally determines STUDENT_LASTNAME     |
-|STUDENT_LASTNAME is functionally dependent on STUDENT_ID      |
+|The player_id functionally determines first_name     |
+|The first_name is functionally dependent on player_id     |
 ---
 # Full Functional Dependency
 - This occurs if the entire collection of attributes in the determinant is necessary for the relationship.
+    - In other words, if we remove the/an attribute from the determinant, determination holds.
 
 - Let's look at an example again!
 ---
@@ -85,19 +92,21 @@ marp: true
 # Relational Algebra
 - This is based on Set Theory and Predicate Logic
 - A **relvar** is a [var]iable that holds a [rel]ation.
-    - The algebra makes more sense with this, but remember that a relation is equivalent to table.
+    - The algebra makes more sense with this term, but remember that a relation is equivalent to table.
+- Relational operators have the property of closure.
+    - Relational algebra using one or more relations (tables) results in another relation (table).
 ---
-## Select
+# Select
 - Uses only a single table as input (unary).
 - Returns all rows or any rows that satisfy a particular condition.
 - It subsets rows, not attributes.
 ---
-## Project
+# Project
 - Also uses only a single table as input (unary).
 - Returns all rows, but only the defined attributes.
 - It subsets attributes, not rows.
 ---
-## Union 
+# Union 
 - Uses two tables.
 - Table must have the same set of attribute characteristics (think data types).
     - Known as being union compatible
@@ -125,14 +134,24 @@ marp: true
 ---
 # Join Continued
 - Natural Join
+    - The key here is the steps. To perform a natural join you use:
+        1. Product
+        2. Join
+        3. Project
 - Equiijoin
+    - Joins based on equality
+- Theta Join
+    - Joins based on inequality comparison <, >, <=, >= or !=
 
 ---
 # Join Continued
 - Inner Join
+    - Keep only matching records.
 - Outer Join
     - Left [Outer] Join
+        - Keep all records in the left table
     - Right [Outer] Join
+        - Keep all records in the right table
 ---
 
 # Divided
@@ -155,14 +174,15 @@ marp: true
 ---
 
 # Deeper Dive Into Relationships
-# 1:1
-# 1:M
-# M:M
-- Composite Entity
+---
+# 1:1 & 1:M
+- These are fairly straightfoward, so let's just use our example!
+---
+# M:N
+- Composite Entity are used to implement a many to many relationship in a relational database
+    - These could be referred to as bridge tables, associative tables or junction tables.
 - Linking Table
-# Data Dictionaries
-- The metadata from your database is invaluable for creating your data dictionaries.
-<!--https://github.com/NYC-Parks/SLADB-->
-# Data Redundancy
-# Indexing
-# Codd's Relational Database Rules
+---
+# Homework
+- Read chapters 3 and 4
+---
