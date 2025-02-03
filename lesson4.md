@@ -5,8 +5,9 @@ marp: true
 # Lesson 4: Indexing and Relationships
 ---
 # Indexing
-- A hugely important mechanism for optimizing the performance a RDBMS.
-
+- A hugely important mechanism for optimizing the performance a RDBMS, especially for tables with many rows.
+- Imagine trying to find a word in a book without an index, this is the same concept for a database.
+- We'll dive deeper into indexing later on.
 ---
 
 # Attributes
