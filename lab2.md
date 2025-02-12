@@ -1,10 +1,6 @@
----
-marp: false
----
-
 # Lab 2
 ## 
-1. Review the Entity Relationship Diagram (ERD). How does it differ from the ERD that you created last week? Are there different entities, are any of the relationships represented differently, if so, please specify a few?
+1. Review the [Entity Relationship Diagram](https://github.com/GeoDan87/CIT225/blob/e3ea3cb8e5a7db1a4877e7f14cb34fbc1865f57f/lab2_erd.png) (ERD). How does it differ from the ERD that you created last week? Are there different entities, are any of the relationships represented differently, if so, please specify a few?
 <br></br>
 <br></br>
 <br></br>
@@ -20,11 +16,13 @@ marp: false
 <br></br>
 <br></br>
 
+
 3. Review the [documentation of data types](https://mariadb.com/kb/en/data-types/) that is provided by MariaDB. Ideally you should spend 10-15 minutes familiarizing yourself with the datatypes broadly and clicking through on a few.
 
 4. Using your best judgement, for the supporter, the campaign and donation entities determine which data types would be best suited for the attributes (columns) that are shown. Note these data types below.
 
 **supporter**
+
 | Column Name   | Data Type     |
 | -------- | ------------- |
 | supporter_id | |
@@ -37,17 +35,19 @@ marp: false
 | update_timestamp | |
 
 **campaign**
-| Column Name   | Data Type     |
-| -------- | ------------- |
-| campaign_id | |
-| campaign_type | |
-| campaign_name | |
-| campaign_start | |
-| campaign_end | |
-| create_timestamp | |
-| update_timestamp | |
+
+| Column Name      | Data Type     |
+|------------------|---------------|
+| campaign_id      |               |
+| campaign_type    |               |
+| campaign_name    |               |
+| campaign_start   |               |
+| campaign_end     |               |
+| create_timestamp |               |
+| update_timestamp |               |
 
 **donation**
+
 | Column Name   | Data Type     |
 | -------- | ------------- |
 | donation_id | |
@@ -68,7 +68,8 @@ marp: false
 ```
 CREATE TABLE hfh.supporter(<column_name> <data_type> [PRIMARY KEY]
                       ,<column_name> <data_type>
-                      ,<column_name> <data_type> [FOREIGN KEY REFERENCES hfh.parent_table(column_name)]);
+                      ,<column_name> <data_type> [FOREIGN KEY 
+                      REFERENCES hfh.parent_table(column_name)]);
 ```
 <br></br>
 <br></br>
