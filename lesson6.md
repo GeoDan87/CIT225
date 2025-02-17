@@ -19,8 +19,6 @@ marp: true
 - Tables are void of insert, update and delete data anomolies ensureing data integrity and consistency.
 - Generally we strive for third normal form (3NF).
 ---
-# Functional Dependence Flashback
----
 # Normal Forms
 | Normal Form   | Characteristic     |
 | -------- | ------------- |
@@ -53,16 +51,27 @@ Table 6.2 in the book (page 207)
 ---
 
 # First Normal Form (1NF)
-- Table format
+- First, make sure that the data is in table format, with rows and columns.
+- Next check for repeating groups, that is multiple rows exist for a single key occurrence.
+- Identify the primary key, whether it's a single attribute or multiple attributes.
+- Identify any dependencies.
+- Let's look at an example.
 ---
 # Second Normal Form (2NF)
+- We're going to handle any partial dependencies. 
+- A **partial dependency** occurs when an attribute is dependent on one key attribute (applicable to composite keys).
+- Let's look at an example.
 
 ---
 # Third Normal Form (3NF)
-- Support attribute inheritance.
-- Define a special supertype attribute known as a subtype discriminator.
-- Define disjoint/overlapping and complete/partial constraints.
-- Example time!
+- A **tranistive dependency** occurs when an attribute is dependent on a non-key attribute.
+- Elminate the transitive dependendicies by creating a new table and reassigning attributes.
+- Let's keep going with our example.
+---
+# Boyce-Codd Third Normal Form (BCNF)
+- Every determinant in a table is a candidate key.
+    - These candidate keys were not chosen as the primary key for one reason or another.
+    - Only violated if a table contains more than one candidate key.
 ---
 # Normalization as Part of the Design
 - We want to include the process of normalization within the design phase so that we don't back ourselves into a corner.
