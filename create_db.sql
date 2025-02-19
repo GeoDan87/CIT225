@@ -109,7 +109,7 @@ CREATE TABLE IF NOT EXISTS
 							 ,language_code VARCHAR(3) #ISO 639-2 https://en.wikipedia.org/wiki/List_of_ISO_639_language_codes
 							 ,create_timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 							 ,update_timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-							 ,CONSTRAINT `fk_podcast_podcastsub` FOREIGN KEY (podcast_id) REFERENCES hfh.podcast(podcast_id)
+							 ,CONSTRAINT `fk_podcast_podcastsub` FOREIGN KEY (podcast_id) REFERENCES hfh.podcast_info(podcast_id)
 							  ON DELETE CASCADE
 							  ON UPDATE RESTRICT
 							 ,CONSTRAINT `fk_supporter_podcast` FOREIGN KEY (supporter_id) REFERENCES hfh.supporter(supporter_id)
@@ -139,7 +139,7 @@ CREATE TABLE IF NOT EXISTS
 							    ,supporter_id INT NOT NULL
 							    ,create_timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 							    ,update_timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-							    ,CONSTRAINT `fk_newsletter_newslettersub` FOREIGN KEY (newsletter_id) REFERENCES hfh.newsletter(newsletter_id)
+							    ,CONSTRAINT `fk_newsletter_newslettersub` FOREIGN KEY (newsletter_id) REFERENCES hfh.newsletter_info(newsletter_id)
 							     ON DELETE CASCADE
 							     ON UPDATE RESTRICT
 							    ,CONSTRAINT `fk_email_newsletter` FOREIGN KEY (email_id) REFERENCES hfh.supporter(email_id)
