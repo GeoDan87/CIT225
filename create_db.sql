@@ -142,7 +142,7 @@ CREATE TABLE IF NOT EXISTS
 							    ,CONSTRAINT `fk_newsletter_newslettersub` FOREIGN KEY (newsletter_id) REFERENCES hfh.newsletter_info(newsletter_id)
 							     ON DELETE CASCADE
 							     ON UPDATE RESTRICT
-							    ,CONSTRAINT `fk_email_newsletter` FOREIGN KEY (email_id) REFERENCES hfh.supporter(email_id)
+							    ,CONSTRAINT `fk_email_newsletter` FOREIGN KEY (email_id) REFERENCES hfh.email_address(email_id)
 							     ON DELETE CASCADE
 							     ON UPDATE RESTRICT
 								 /*Put a unique constraint on the combination of emails
