@@ -26,7 +26,7 @@ CREATE TABLE IF NOT EXISTS
 
 CREATE TABLE IF NOT EXISTS
 	hfh.campaign(campaign_id INT UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT
-				 ,campaign_type UNSIGNED INT
+				 ,campaign_type INT UNSIGNED
 				 ,campaign_name VARCHAR(255)
 				 ,campaign_start DATE
 				 ,campaign_end DATE
@@ -103,8 +103,8 @@ CREATE TABLE IF NOT EXISTS
 									  
 CREATE TABLE IF NOT EXISTS
 	hfh.podcast_subscription(podcast_subscription_id INT UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT
-							 ,podcast_id UNSIGNED INT NOT NULL
-							 ,supporter_id UNSIGNED INT NOT NULL
+							 ,podcast_id INT UNSIGNED NOT NULL
+							 ,supporter_id INT UNSIGNED NOT NULL
 							 ,podcast_subscribed_date DATE NOT NULL
 							 ,language_code VARCHAR(3) #ISO 639-2 https://en.wikipedia.org/wiki/List_of_ISO_639_language_codes
 							 ,create_timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP
@@ -130,7 +130,7 @@ CREATE TABLE IF NOT EXISTS
 									  
 CREATE TABLE IF NOT EXISTS
 	hfh.newsletter_subscription(newsletter_subscription_id INT UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT
-							    ,email_id INT NOT NULL
+							    ,email_id INT UNSIGNED NOT NULL
 							    ,newsletter_id INT UNSIGNED NOT NULL
 							    ,newsletter_url VARCHAR(2048) #Practical Limit
 							    ,newsletter_subscribed TINYINT DEFAULT 1
