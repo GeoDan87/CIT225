@@ -55,8 +55,8 @@ CREATE TABLE IF NOT EXISTS
 				 			,supporter_id INT NOT NULL
 							,sustaining_local_currency VARCHAR(3) NOT NULL# ISO4217
 							,sustaining_local_amount DECIMAL
-							,sustaining_start
-							,sustaining_end
+							,sustaining_start DATE
+							,sustaining_end DATE
 							,sustaining_status INT NOT NULL DEFAULT 1
 							,campaign_id INT
 							,create_timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP
