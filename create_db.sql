@@ -3,7 +3,7 @@ DROP DATABASE IF EXISTS hfh;
 CREATE DATABASE IF NOT EXISTS hfh;
 
 CREATE TABLE IF NOT EXISTS
-	hfh.supporter(supporter_id INT PRIMARY KEY AUTO_INCREMENT
+	hfh.supporter(supporter_id INT UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT
 				 ,login_id UUID NOT NULL
 				 ,first_name VARCHAR(255) NOT NULL
 				 ,last_name VARCHAR(255)
@@ -13,8 +13,8 @@ CREATE TABLE IF NOT EXISTS
 				 ,update_timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP);
 
 CREATE TABLE IF NOT EXISTS
-	hfh.email_address(email_id INT PRIMARY KEY AUTO_INCREMENT
-					  ,supporter_id INT NOT NULL
+	hfh.email_address(email_id INT UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT
+					  ,supporter_id INT UNSIGNED NOT NULL
 					  ,email_address VARCHAR(320) #https://www.rfc-editor.org/rfc/rfc3696
 					  ,email_double_opt_in TINYINT NOT NULL DEFAULT 0
 					  ,email_opt_out TINYINT NOT NULL DEFAULT 0
@@ -25,8 +25,8 @@ CREATE TABLE IF NOT EXISTS
 					   ON UPDATE RESTRICT);	
 
 CREATE TABLE IF NOT EXISTS
-	hfh.campaign(campaign_id INT PRIMARY KEY AUTO_INCREMENT
-				 ,campaign_type INT
+	hfh.campaign(campaign_id INT UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT
+				 ,campaign_type UNSIGNED INT
 				 ,campaign_name VARCHAR(255)
 				 ,campaign_start DATE
 				 ,campaign_end DATE
@@ -34,9 +34,9 @@ CREATE TABLE IF NOT EXISTS
 				 ,update_timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP);
 
 CREATE TABLE IF NOT EXISTS
-	hfh.petition(petition_id INT PRIMARY KEY AUTO_INCREMENT
-				 ,supporter_id INT NOT NULL
-				 ,campaign_id INT NOT NULL
+	hfh.petition(petition_id  INT UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT
+				 ,supporter_id INT UNSIGNED NOT NULL
+				 ,campaign_id INT UNSIGNED NOT NULL
 				 ,petition_signed_date DATE
 				 ,petition_url VARCHAR(2048) #Practical limit
 				 ,create_timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP
@@ -51,14 +51,14 @@ CREATE TABLE IF NOT EXISTS
 				 ,CONSTRAINT `unq_supporter_campaign` UNIQUE(supporter_id, campaign_id));
 
 CREATE TABLE IF NOT EXISTS
-	hfh.sustaining_donation(sustaining_id INT PRIMARY KEY AUTO_INCREMENT
-				 			,supporter_id INT NOT NULL
+	hfh.sustaining_donation(sustaining_id INT UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT
+				 			,supporter_id INT UNSIGNED NOT NULL
 							,sustaining_local_currency VARCHAR(3) NOT NULL# ISO4217
 							,sustaining_local_amount DECIMAL
 							,sustaining_start DATE
 							,sustaining_end DATE
-							,sustaining_status INT NOT NULL DEFAULT 1
-							,campaign_id INT
+							,sustaining_status INT UNSIGNED NOT NULL DEFAULT 1
+							,campaign_id INT UNSIGNED 
 							,create_timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 							,update_timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 							,CONSTRAINT `fk_campaign_sustaining` FOREIGN KEY (campaign_id) REFERENCES hfh.campaign(campaign_id)
@@ -69,16 +69,16 @@ CREATE TABLE IF NOT EXISTS
 							ON UPDATE RESTRICT);
 
 CREATE TABLE IF NOT EXISTS
-	hfh.donation(donation_id INT PRIMARY KEY AUTO_INCREMENT
-				 ,supporter_id INT NOT NULL
+	hfh.donation(donation_id INT UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT
+				 ,supporter_id INT UNSIGNED NOT NULL
 				 ,donation_local_currency VARCHAR(3) NOT NULL# ISO4217
 				 ,donation_local_amount DECIMAL
 				 ,donation_usd_amount DECIMAL
 				 ,donation_url VARCHAR(2048) #Practical limit
 				 ,donation_date DATE
 				 ,donation_status INT NOT NULL DEFAULT 1
-				 ,campaign_id INT
-				 ,sustaining_id INT
+				 ,campaign_id INT UNSIGNED
+				 ,sustaining_id INT UNSIGNED
 				 ,create_timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 				 ,update_timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 				 ,CONSTRAINT `fk_campaign_donation` FOREIGN KEY (campaign_id) REFERENCES hfh.campaign(campaign_id)
@@ -92,7 +92,7 @@ CREATE TABLE IF NOT EXISTS
 				 ON UPDATE RESTRICT);
 
 CREATE TABLE IF NOT EXISTS
-	hfh.podcast_info(podcast_id INT PRIMARY KEY AUTO_INCREMENT
+	hfh.podcast_info(podcast_id INT UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT
 					 ,podcast_name VARCHAR(255)
 					 ,podcast_description VARCHAR(2000)
 					 ,language_code  VARCHAR(3) #ISO 639-2 https://en.wikipedia.org/wiki/List_of_ISO_639_language_codes
@@ -102,9 +102,9 @@ CREATE TABLE IF NOT EXISTS
 					 ,update_timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP);
 									  
 CREATE TABLE IF NOT EXISTS
-	hfh.podcast_subscription(podcast_subscription_id INT PRIMARY KEY AUTO_INCREMENT
-							 ,podcast_id INT NOT NULL
-							 ,supporter_id INT NOT NULL
+	hfh.podcast_subscription(podcast_subscription_id INT UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT
+							 ,podcast_id UNSIGNED INT NOT NULL
+							 ,supporter_id UNSIGNED INT NOT NULL
 							 ,podcast_subscribed_date DATE NOT NULL
 							 ,language_code VARCHAR(3) #ISO 639-2 https://en.wikipedia.org/wiki/List_of_ISO_639_language_codes
 							 ,create_timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP
@@ -120,7 +120,7 @@ CREATE TABLE IF NOT EXISTS
 							 ,CONSTRAINT `unq_supporter_podcast` UNIQUE (supporter_id, podcast_id));
 
 CREATE TABLE IF NOT EXISTS
-	hfh.newsletter_info(newsletter_id INT PRIMARY KEY AUTO_INCREMENT
+	hfh.newsletter_info(newsletter_id INT UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT
 						,newsletter_name VARCHAR(100)
 						,newsletter_description VARCHAR(2000)
 						,newsletter_start DATE
@@ -129,14 +129,14 @@ CREATE TABLE IF NOT EXISTS
 						,update_timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP);
 									  
 CREATE TABLE IF NOT EXISTS
-	hfh.newsletter_subscription(newsletter_subscription_id INT PRIMARY KEY AUTO_INCREMENT
+	hfh.newsletter_subscription(newsletter_subscription_id INT UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT
 							    ,email_id INT NOT NULL
-							    ,newsletter_id INT NOT NULL
+							    ,newsletter_id INT UNSIGNED NOT NULL
 							    ,newsletter_url VARCHAR(2048) #Practical Limit
 							    ,newsletter_subscribed TINYINT DEFAULT 1
 							    ,newsletter_subscribed_date DATE NOT NULL
 								,language_code VARCHAR(3) #ISO 639-2 https://en.wikipedia.org/wiki/List_of_ISO_639_language_codes
-							    ,supporter_id INT NOT NULL
+							    ,supporter_id INT UNSIGNED NOT NULL
 							    ,create_timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 							    ,update_timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 							    ,CONSTRAINT `fk_newsletter_newslettersub` FOREIGN KEY (newsletter_id) REFERENCES hfh.newsletter_info(newsletter_id)
