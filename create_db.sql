@@ -53,7 +53,7 @@ CREATE TABLE IF NOT EXISTS
 CREATE TABLE IF NOT EXISTS
 	hfh.sustaining_donation(sustaining_id INT UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT
 				 			,supporter_id INT UNSIGNED NOT NULL
-							,sustaining_local_currency VARCHAR(3) NOT NULL# ISO4217
+							,local_currency VARCHAR(3) NOT NULL# ISO4217
 							,sustaining_local_amount DECIMAL
 							,sustaining_start DATE
 							,sustaining_end DATE
@@ -71,7 +71,7 @@ CREATE TABLE IF NOT EXISTS
 CREATE TABLE IF NOT EXISTS
 	hfh.donation(donation_id INT UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT
 				 ,supporter_id INT UNSIGNED NOT NULL
-				 ,donation_local_currency VARCHAR(3) NOT NULL# ISO4217
+				 ,local_currency VARCHAR(3) NOT NULL# ISO4217
 				 ,donation_local_amount DECIMAL
 				 ,donation_usd_amount DECIMAL
 				 ,donation_url VARCHAR(2048) #Practical limit
