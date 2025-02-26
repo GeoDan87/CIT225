@@ -50,10 +50,10 @@ CREATE TABLE IF NOT EXISTS
 				 ,date_of_birth DATE
 				 ,country_code VARCHAR(3) #ISO 3166 alpha 3 code
 				 ,create_timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-				 ,update_timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP)
+				 ,update_timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 				 ,CONSTRAINT `fk_supporter_country` FOREIGN KEY (country_code) REFERENCES hfh.country(country_code)
 					   ON DELETE CASCADE
-					   ON UPDATE RESTRICT;
+					   ON UPDATE RESTRICT);
 
 CREATE TABLE IF NOT EXISTS
 	hfh.email_address(email_id INT UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT
@@ -103,7 +103,7 @@ CREATE TABLE IF NOT EXISTS
 							,sustaining_local_amount DECIMAL
 							,sustaining_start DATE
 							,sustaining_end DATE
-							,sustaining_status INT UNSIGNED NOT NULL DEFAULT 1
+							,sustaining_status INT UNSIGNED NOT NULL
 							,campaign_id INT UNSIGNED 
 							,create_timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 							,update_timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
@@ -128,7 +128,7 @@ CREATE TABLE IF NOT EXISTS
 				 ,donation_usd_amount DECIMAL
 				 ,donation_url VARCHAR(2048) #Practical limit
 				 ,donation_date DATE
-				 ,donation_status INT NOT NULL DEFAULT 1
+				 ,donation_status INT UNSIGNED NOT NULL
 				 ,campaign_id INT UNSIGNED
 				 ,sustaining_id INT UNSIGNED
 				 ,create_timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP
