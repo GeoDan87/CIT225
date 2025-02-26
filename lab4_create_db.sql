@@ -75,7 +75,7 @@ CREATE TABLE IF NOT EXISTS
 				 ,campaign_end DATE
 				 ,create_timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 				 ,update_timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-				 ,CONSTRAINT `fk_campaign_type` FOREIGN KEY (campaign_type) REFERENCES hfh.campaign_type(campaign_type)
+				 ,CONSTRAINT `fk_campaign_type` FOREIGN KEY (`campaign_type`) REFERENCES hfh.campaign_type(`campaign_type`)
 					   ON DELETE CASCADE
 					   ON UPDATE RESTRICT);
 
@@ -113,10 +113,10 @@ CREATE TABLE IF NOT EXISTS
 							,CONSTRAINT `fk_supporter_sustaining` FOREIGN KEY (supporter_id) REFERENCES hfh.supporter(supporter_id)
 							ON DELETE CASCADE
 							ON UPDATE RESTRICT
-                            ,CONSTRAINT `fk_sustaining_status` FOREIGN KEY (sustaining_status) REFERENCES hfh.sustaining_status(sustaining_status)
+                            ,CONSTRAINT `fk_sustaining_status` FOREIGN KEY (`sustaining_status`) REFERENCES hfh.sustaining_status(`sustaining_status`)
 							ON DELETE CASCADE
 							ON UPDATE RESTRICT
-                            ,CONSTRAINT `fk_sustaining_currency` FOREIGN KEY (local_currency) REFERENCES hfh.currency(local_currency)
+                            ,CONSTRAINT `fk_sustaining_currency` FOREIGN KEY (`local_currency`) REFERENCES hfh.local_currency(`local_currency`)
                             ON DELETE CASCADE
                             ON UPDATE RESTRICT);
 
@@ -142,10 +142,10 @@ CREATE TABLE IF NOT EXISTS
 				,CONSTRAINT `fk_sustaining_donation` FOREIGN KEY (sustaining_id) REFERENCES hfh.sustaining_donation(sustaining_id)
 				 ON DELETE CASCADE
 				 ON UPDATE RESTRICT
-                ,CONSTRAINT `fk_donation_status` FOREIGN KEY (donation_status) REFERENCES hfh.donation_status(donation_status)
+                ,CONSTRAINT `fk_donation_status` FOREIGN KEY (`donation_status`) REFERENCES hfh.donation_status(`donation_status`)
                 ON DELETE CASCADE
                 ON UPDATE RESTRICT
-                ,CONSTRAINT `fk_donation_currency` FOREIGN KEY (local_currency) REFERENCES hfh.currency(local_currency)
+                ,CONSTRAINT `fk_donation_currency` FOREIGN KEY (`local_currency`) REFERENCES hfh.local_currency(`local_currency`)
                 ON DELETE CASCADE
                 ON UPDATE RESTRICT);
 
