@@ -1,0 +1,5 @@
+Faker==35.2.2
+pycountry==24.6.1
+SQLAlchemy==2.0.38
+PyMySQL==1.1.1
+numpy==2.2.3
