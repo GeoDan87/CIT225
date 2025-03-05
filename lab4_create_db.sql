@@ -17,7 +17,7 @@ CREATE TABLE IF NOT EXISTS
 						  ,update_timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP);
 
 CREATE TABLE IF NOT EXISTS
-	hfh.country(country_code VARCHAR(3) PRIMARY KEY
+	hfh.country(country_code VARCHAR(2) PRIMARY KEY
 				,country_name VARCHAR(100)
 				,create_timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 				,update_timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP);
@@ -29,8 +29,8 @@ CREATE TABLE IF NOT EXISTS
 				 ,update_timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP);
 
 CREATE TABLE IF NOT EXISTS
-	hfh.local_currency(local_currency VARCHAR(3) PRIMARY KEY
-					   ,local_currency_name VARCHAR(100)
+	hfh.local_currency(currency_code VARCHAR(3) PRIMARY KEY
+					   ,currency_name VARCHAR(100)
 					   ,create_timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 					   ,update_timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP);
 
@@ -48,7 +48,7 @@ CREATE TABLE IF NOT EXISTS
 				 ,first_name VARCHAR(255) NOT NULL
 				 ,last_name VARCHAR(255)
 				 ,date_of_birth DATE
-				 ,country_code VARCHAR(3) #ISO 3166 alpha 3 code
+				 ,country_code VARCHAR(2) #ISO 3166 alpha 3 code
 				 ,create_timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 				 ,update_timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 				 ,CONSTRAINT `fk_supporter_country` FOREIGN KEY (country_code) REFERENCES hfh.country(country_code)
@@ -71,8 +71,8 @@ CREATE TABLE IF NOT EXISTS
 	hfh.campaign(campaign_id INT UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT
 				 ,campaign_type INT UNSIGNED
 				 ,campaign_name VARCHAR(255)
-				 ,campaign_start DATE
-				 ,campaign_end DATE
+				 ,campaign_start_date DATE
+				 ,campaign_end_date DATE
 				 ,create_timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 				 ,update_timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 				 ,CONSTRAINT `fk_campaign_type` FOREIGN KEY (`campaign_type`) REFERENCES hfh.campaign_type(`campaign_type`)
@@ -99,10 +99,8 @@ CREATE TABLE IF NOT EXISTS
 CREATE TABLE IF NOT EXISTS
 	hfh.sustaining_donation(sustaining_id INT UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT
 				 			,supporter_id INT UNSIGNED NOT NULL
-							,local_currency VARCHAR(3) NOT NULL# ISO4217
-							,sustaining_local_amount DECIMAL
-							,sustaining_start DATE
-							,sustaining_end DATE
+							,sustaining_start_date DATE
+							,sustaining_end_date DATE
 							,sustaining_status INT UNSIGNED NOT NULL
 							,campaign_id INT UNSIGNED 
 							,create_timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP
@@ -115,15 +113,12 @@ CREATE TABLE IF NOT EXISTS
 							ON UPDATE RESTRICT
                             ,CONSTRAINT `fk_sustaining_status` FOREIGN KEY (`sustaining_status`) REFERENCES hfh.sustaining_status(`sustaining_status`)
 							ON DELETE CASCADE
-							ON UPDATE RESTRICT
-                            ,CONSTRAINT `fk_sustaining_currency` FOREIGN KEY (`local_currency`) REFERENCES hfh.local_currency(`local_currency`)
-                            ON DELETE CASCADE
-                            ON UPDATE RESTRICT);
+							ON UPDATE RESTRICT);
 
 CREATE TABLE IF NOT EXISTS
 	hfh.donation(donation_id INT UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT
 				 ,supporter_id INT UNSIGNED NOT NULL
-				 ,local_currency VARCHAR(3) NOT NULL# ISO4217
+				 ,currency_code VARCHAR(3) NOT NULL# ISO4217
 				 ,donation_local_amount DECIMAL
 				 ,donation_usd_amount DECIMAL
 				 ,donation_url VARCHAR(2048) #Practical limit
@@ -145,7 +140,7 @@ CREATE TABLE IF NOT EXISTS
                 ,CONSTRAINT `fk_donation_status` FOREIGN KEY (`donation_status`) REFERENCES hfh.donation_status(`donation_status`)
                 ON DELETE CASCADE
                 ON UPDATE RESTRICT
-                ,CONSTRAINT `fk_donation_currency` FOREIGN KEY (`local_currency`) REFERENCES hfh.local_currency(`local_currency`)
+                ,CONSTRAINT `fk_donation_currency` FOREIGN KEY (`currency_code`) REFERENCES hfh.local_currency(`currency_code`)
                 ON DELETE CASCADE
                 ON UPDATE RESTRICT);
 
@@ -154,8 +149,8 @@ CREATE TABLE IF NOT EXISTS
 					 ,podcast_name VARCHAR(255)
 					 ,podcast_description VARCHAR(2000)
 					 ,language_code  VARCHAR(3) #ISO 639-2 https://en.wikipedia.org/wiki/List_of_ISO_639_language_codes
-					 ,podcast_start DATE
-					 ,podcast_end DATE
+					 ,podcast_start_date DATE
+					 ,podcast_end_date DATE
 					 ,create_timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 					 ,update_timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
                      ,CONSTRAINT `fk_podcast_language` FOREIGN KEY (language_code) REFERENCES hfh.language(language_code)
@@ -182,10 +177,10 @@ CREATE TABLE IF NOT EXISTS
 
 CREATE TABLE IF NOT EXISTS
 	hfh.newsletter_info(newsletter_id INT UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT
-						,newsletter_name VARCHAR(100)
+						,newsletter_name VARCHAR(100) NOT NULL
 						,newsletter_description VARCHAR(2000)
-						,newsletter_start DATE
-						,newsletter_end DATE
+						,newsletter_start_date DATE
+						,newsletter_end_date DATE
 						,create_timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 						,update_timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP);
 									  
