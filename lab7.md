@@ -64,7 +64,7 @@ WHERE donation_id = 1;
 <br></br>
 <br></br>
 
-9. You can manipulate the isolation that you queried in question 4. In your second session, add the following line at the top of the query from question 5. `SET SESSION transaction_isolation = 'read-uncommitted;'`, run the query. What is the result now?
+9. You can manipulate the isolation that you queried in question 4. In your second session, add the following line at the top of the query from question 5. `SET SESSION transaction_isolation = 'read-uncommitted';`, run the query. What is the result now?
 <br></br>
 <br></br>
 <br></br>
