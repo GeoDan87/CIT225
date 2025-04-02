@@ -1,6 +1,6 @@
 1. Last lab we worked through trying to implement a trigger in the database to track changes in the donation status. Let's pull the updates from the CIT225 repo, so open Git Bash and cd to the directory where CIT225 is. Run the following command `git pull origin main`, this will copy the contents of the remote repository to your virtual machine.
 
-2. Now that we have the updated code base, we'll open Anaconda prompt and type `conda activate CIT225` then run `pip install dateutils`. In the directory containing your CIT225 folder you'll run `python generate_donation_data_lab7.py`.
+2. Now that we have the updated code base, we'll open Anaconda prompt and type `conda activate CIT225` then run `pip install dateutils`. In the directory containing your CIT225 folder you'll run `python insert_generated_data_lab7.py`.
 <br></br>
 <br></br>
 
