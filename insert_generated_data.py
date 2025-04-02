@@ -55,7 +55,7 @@ insert_data(con, 'supporter', 'hfh', supporters)
 supporters = select_data(con, 'supporter', 'hfh')
 
 #Extract the first element (supporter_id) from the supporters database
-supporter_ids = [s[0] for s in supporters]
+supporter_ids = [s.get('supporter_id') for s in supporters]
 
 #Generate the fake email_address data
 emails = generate_fake_emails(supporter_ids)

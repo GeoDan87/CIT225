@@ -96,12 +96,17 @@ def select_data(connected_engine, table, schema):
         #Execute the select statement
         results = connected_engine.execute(select_stmt)
         
+        #Get the columns
+        columns = tuple(results.keys())
+        
         #Fetch all of the results
         results = results.fetchall()
+        
+        results_dict = [{k:v for k,v in zip(columns,data)} for data in results]
     
     #Otherwise raise an exception
     except Exception as error:
         results = None
         raise Exception('Failed to connect to database and/or table object. {}'.format(error))
         
-    return results
+    return results_dict
