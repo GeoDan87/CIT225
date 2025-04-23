@@ -192,7 +192,6 @@ CREATE TABLE IF NOT EXISTS
 							    ,newsletter_subscribed TINYINT DEFAULT 1
 							    ,newsletter_subscribed_date DATE NOT NULL
 								,language_code VARCHAR(3) #ISO 639-2 https://en.wikipedia.org/wiki/List_of_ISO_639_language_codes
-							    ,supporter_id INT UNSIGNED NOT NULL
 							    ,create_timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 							    ,update_timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 							    ,CONSTRAINT `fk_newsletter_newslettersub` FOREIGN KEY (newsletter_id) REFERENCES hfh.newsletter_info(newsletter_id)
